@@ -136,48 +136,6 @@ clone_ghostty() {
     cd "$SCRIPT_DIR"
 }
 
-# Apply patches to Ghostty for release builds
-patch_ghostty() {
-    local ghostty_dir="$SCRIPT_DIR/../ghostty"
-
-    if [ ! -d "$ghostty_dir" ]; then
-        log_error "Ghostty directory not found at $ghostty_dir"
-        exit 1
-    fi
-
-    log_info "Applying patches to Ghostty..."
-
-    # Patch simdutf/build.zig
-    local simdutf_file="$ghostty_dir/pkg/simdutf/build.zig"
-    if [ -f "$simdutf_file" ]; then
-        if grep -q 'fno-sanitize=undefined' "$simdutf_file"; then
-            log_info "simdutf/build.zig already patched"
-        else
-            log_info "Patching simdutf/build.zig..."
-            sed -i.bak 's/"-DSIMDUTF_IMPLEMENTATION_ICELAKE=0",/"-DSIMDUTF_IMPLEMENTATION_ICELAKE=0",\n        "-fno-sanitize=undefined",\n        "-fno-sanitize-trap=undefined",/' "$simdutf_file"
-            rm -f "${simdutf_file}.bak"
-        fi
-    else
-        log_warn "simdutf/build.zig not found, skipping patch"
-    fi
-
-    # Patch highway/build.zig
-    local highway_file="$ghostty_dir/pkg/highway/build.zig"
-    if [ -f "$highway_file" ]; then
-        if grep -q 'fno-sanitize=undefined' "$highway_file"; then
-            log_info "highway/build.zig already patched"
-        else
-            log_info "Patching highway/build.zig..."
-            sed -i.bak 's/"-fno-vectorize",/"-fno-vectorize",\n\n        \/\/ Disable undefined behavior sanitizer\n        "-fno-sanitize=undefined",\n        "-fno-sanitize-trap=undefined",/' "$highway_file"
-            rm -f "${highway_file}.bak"
-        fi
-    else
-        log_warn "highway/build.zig not found, skipping patch"
-    fi
-
-    log_info "Patches applied"
-}
-
 # Build pty-to-html
 build_project() {
     log_info "Building pty-to-html in release mode..."
@@ -208,10 +166,7 @@ main() {
     # Step 2: Clone Ghostty
     clone_ghostty
 
-    # Step 3: Apply patches
-    patch_ghostty
-
-    # Step 4: Build project
+    # Step 3: Build project
     build_project
 
     echo

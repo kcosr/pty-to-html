@@ -36,8 +36,7 @@ Run the automated setup script:
 This will:
 1. Download and install Zig 0.15.2
 2. Clone the Ghostty repository
-3. Apply required patches to Ghostty
-4. Build pty-to-html in release mode
+3. Build pty-to-html in release mode
 
 ## Manual Setup
 
@@ -87,53 +86,7 @@ parent-dir/
 └── pty-to-html/
 ```
 
-### 3. Patch Ghostty for Release Builds
-
-Ghostty's C++ dependencies (simdutf and highway) include undefined behavior sanitizer flags that can cause linker errors in release builds. You need to disable these.
-
-#### Patch pkg/simdutf/build.zig
-
-In `ghostty/pkg/simdutf/build.zig`, find this section:
-
-```zig
-try flags.appendSlice(b.allocator, &.{
-    "-DSIMDUTF_IMPLEMENTATION_ICELAKE=0",
-});
-```
-
-And change it to:
-
-```zig
-try flags.appendSlice(b.allocator, &.{
-    "-DSIMDUTF_IMPLEMENTATION_ICELAKE=0",
-    "-fno-sanitize=undefined",
-    "-fno-sanitize-trap=undefined",
-});
-```
-
-#### Patch pkg/highway/build.zig
-
-In `ghostty/pkg/highway/build.zig`, find this section:
-
-```zig
-"-fno-cxx-exceptions",
-"-fno-slp-vectorize",
-"-fno-vectorize",
-```
-
-And add these lines after it:
-
-```zig
-"-fno-cxx-exceptions",
-"-fno-slp-vectorize",
-"-fno-vectorize",
-
-// Disable undefined behavior sanitizer
-"-fno-sanitize=undefined",
-"-fno-sanitize-trap=undefined",
-```
-
-### 4. Build
+### 3. Build
 
 Build in release mode for optimal performance:
 
@@ -219,7 +172,7 @@ If you see errors like:
 error: lld-link: undefined symbol: __ubsan_handle_type_mismatch_v1
 ```
 
-Make sure you've applied the patches to Ghostty's `pkg/simdutf/build.zig` and `pkg/highway/build.zig` as described above.
+Make sure you have checked out the most recent version of ghostty.
 
 ### Slow performance
 
@@ -228,7 +181,7 @@ Ensure you're building with optimization:
 zig build -Doptimize=ReleaseFast
 ```
 
-Debug builds are significantly slower (~100x) due to the terminal emulation complexity.
+Debug builds are significantly slower due to the terminal emulation complexity.
 
 ### Wrong Zig version
 
@@ -250,12 +203,16 @@ zig version  # Must be 0.15.2
 
 ```
 pty-to-html/
+├── AGENTS.md        # Instructions for agents working with this codebase
 ├── build.zig        # Zig build configuration
 ├── build.zig.zon    # Package manifest (references ghostty)
-├── src/
-│   └── main.zig     # Main application
-├── setup.sh         # Automated setup script
+├── LICENSE          # License
 └── README.md        # This file
+├── setup.sh         # Automated setup script
+├── src
+│   └── main.zig     # Main application
+└── testdata         # Test input data
+    └── session.log
 ```
 
 ## License
