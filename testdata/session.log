@@ -1,0 +1,30 @@
+]0;kevin@srv:/srv/devtoolsd[?2004h[kevin@srv devtoolsd]$ [K[kevin@srv devtoolsd]$ ls -al
+[?2004ltotal 188
+drwxr-xr-x. 15 devtoolsd devtoolsd  4096 Nov 24 22:27 [0m[01;34m.[0m
+drwxr-xr-x.  4 root      root         36 Nov 18 18:39 [01;34m..[0m
+drwxr-xr-x.  3 devtoolsd devtoolsd    68 Nov 19 11:51 [01;34m.android[0m
+drwxr-xr-x.  8 devtoolsd devtoolsd   154 Nov 19 11:49 [01;34mAndroid[0m
+-rw-------.  1 devtoolsd devtoolsd 35544 Nov 24 21:54 .bash_history
+-rw-r--r--.  1 devtoolsd devtoolsd    18 Oct 28  2024 .bash_logout
+-rw-r--r--.  1 devtoolsd devtoolsd   144 Oct 28  2024 .bash_profile
+-rw-r--r--.  1 devtoolsd devtoolsd   567 Nov 21 00:15 .bashrc
+drwx------.  4 devtoolsd devtoolsd    40 Nov 18 22:56 [01;34m.cache[0m
+drwxr-xr-x. 10 devtoolsd devtoolsd   184 Nov 24 15:59 [01;34m.claude[0m
+-rw-------.  1 devtoolsd devtoolsd 46035 Nov 24 15:59 .claude.json
+-rw-------.  1 devtoolsd devtoolsd 45569 Nov 24 15:59 .claude.json.backup
+drwxr-xr-x.  4 devtoolsd devtoolsd   110 Nov 20 22:39 [01;34m.codex[0m
+drwx------.  8 devtoolsd devtoolsd    96 Nov 20 13:19 [01;34m.config[0m
+-rw-r--r--.  1 devtoolsd devtoolsd   159 Nov 19 14:30 .gitconfig
+-rw-------.  1 devtoolsd devtoolsd    62 Nov 24 22:07 .git-credentials
+drwxr-xr-x.  5 devtoolsd devtoolsd    49 Nov 24 11:37 [01;34mgitlab_snapshot[0m
+drwxr-xr-x. 10 devtoolsd devtoolsd   123 Nov 19 11:43 [01;34m.gradle[0m
+-rw-------.  1 devtoolsd devtoolsd    20 Nov 24 21:45 .lesshst
+drwxr-xr-x.  3 devtoolsd devtoolsd    19 Nov 18 21:24 [01;34m.local[0m
+-rw-r--r--.  1 devtoolsd devtoolsd    68 Nov 18 22:53 .netrc
+drwxr-xr-x.  4 devtoolsd devtoolsd    35 Nov 18 22:55 [01;34m.npm[0m
+drwxr-xr-x.  5 devtoolsd devtoolsd    44 Nov 21 15:33 [01;34mprod[0m
+drwx------.  2 devtoolsd devtoolsd   102 Nov 19 10:28 [01;34m.ssh[0m
+drwxr-xr-x.  2 devtoolsd devtoolsd    24 Nov 18 22:59 [01;34m.vim[0m
+-rw-------.  1 devtoolsd devtoolsd 24334 Nov 24 22:27 .viminfo
+]0;kevin@srv:/srv/devtoolsd[?2004h[kevin@srv devtoolsd]$ exit
+[?2004lexit

@@ -1,0 +1,13 @@
+.{
+    .name = .pty_to_html,
+    .version = "0.1.0",
+    .fingerprint = 0xd8fa644dac5824e2,
+    .dependencies = .{
+        .ghostty = .{ .path = "../ghostty" },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
