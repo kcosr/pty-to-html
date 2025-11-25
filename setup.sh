@@ -50,7 +50,7 @@ detect_platform() {
             ;;
     esac
 
-    echo "${os}-${arch}"
+    echo "${arch}-${os}"
 }
 
 # Check if Zig is installed and has correct version

@@ -12,7 +12,7 @@ This tool parses terminal escape sequences (ANSI colors, styles, cursor movement
 - Configurable terminal dimensions
 - Output as HTML fragment or full HTML document
 - Reads from file or stdin
-- Fast processing (~0.12s for 12MB files)
+- Fast processing
 
 ## Requirements
 
